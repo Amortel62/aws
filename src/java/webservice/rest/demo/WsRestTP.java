@@ -159,7 +159,19 @@ public class WsRestTP  {
          
        }   
 
-    
+///////////////////////////////////////////////////////////////
+       
+    @GET
+    @Path("facture/{numfact}")
+    @Produces({"application/xml","application/json"})
+     public Facture getNumFact(@PathParam("numfact") Long numfact) {
+            
+      Facture f = dao.getFacture(numfact);
+     f.getLeClient().setLaRegion(null);
+     f.setLeClient(null);
+      
+      return f;
+    }    
     
 
 }
